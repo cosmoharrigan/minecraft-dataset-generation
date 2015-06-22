@@ -3,7 +3,7 @@
 ## Overview
 The files needed to generate the Minecraft dataset are provided here.
 
-The world has one chunk defined, which is 16x16 blocks wide by 256 blocks high.
+The world uses one chunk, which is 16x16 blocks wide by 256 blocks high.
 
 ## Contents
 * **world** - The ```world``` folder in the Minecraft server folder should be replaced with this folder.

@@ -11,9 +11,9 @@ __author__ = "Cosmo Harrigan"
 
 # Load the level data: set the path using level_filename here
 level_filename = "/Users/cosmo/minecraft-dataset-generation/world/level.dat" # Unprocessed repository version
-#level_filename = "/Users/cosmo/minecraft-server/world/level.dat" # Server version
-#level_filename = "/Users/cosmo/minecraft-dataset-generation/world-processed/level.dat" # Processed repository version
-#level_filename = "/Users/cosmo/Library/Application Support/minecraft/saves/test6b/level.dat" # MCEdit saved version
+# level_filename = "/Users/cosmo/minecraft-server/world/level.dat" # Server version
+# level_filename = "/Users/cosmo/minecraft-dataset-generation/world-processed/level.dat" # Processed repository version
+# level_filename = "/Users/cosmo/Library/Application Support/minecraft/saves/test6b/level.dat" # MCEdit saved version
 
 world = mclevel.loadWorld(level_filename)
 
@@ -49,13 +49,27 @@ print("Total block count: {0}".format(int(block_count)))
 # Modify a block: set coordinate (0, 0) at altitude 2 to be a mushroom
 chunk.Blocks[0, 0, 2] = 40
 
+# Erase any blocks above the grass
+#for altitude in range(256 - 2):
+#    chunk.Blocks[:, :, altitude] = 0
+chunk.Blocks[:, :, 2:255] = 0
+
+# Randomly place 10 blocks according to certain constraints
+num_blocks = 10
+for i in range(num_blocks):
+    # Randomly choose x and y coordinates within the range of 0 to 15
+    x = np.random.randint(0, 15)
+    y = np.random.randint(0, 15)
+    # Randomly choose an altitude coordinate between 2 (the first level above the grass) and 10
+    altitude = np.random.randint(2, 10)
+    # Randomly choose a block type from 1 (stone), 17 (wood), 40 (mushroom)
+    block_type = np.random.choice([1, 17, 40])
+    # Place the block
+    chunk.Blocks[x, y, altitude] = block_type
+
 # Save the updated world
 chunk.chunkChanged()
 world.saveInPlace()
 
-# world.saveToFile("level_updated.dat")
-# # world.saveInPlace
-#
 # # Check what methods and attributes the world exposes
-# for elem in dir(world):
-#     print(elem)
+# [print(elem) for elem in dir(world)]
