@@ -31,15 +31,31 @@ print("Number of chunks: {0}".format(len(list(chunks))))
 # are defining a small world that fits within one chunk.
 chunk = world.getChunk(0, 0)
 
-# Get access to the 3D array of blocks in this chunk
-blocks = chunk.Blocks
+block_count = 0
 
 # Display the blocks at each slice that is non-empty
 for altitude in range(256):
     # Print the slice of this altitude
-    altitude_slice = blocks[:, :, altitude]
+    altitude_slice = chunk.Blocks[:, :, altitude]
 
     # If the altitude slice contains any blocks, print it
     if np.sum(altitude_slice):
         print("---- Altitude: {0}".format(altitude))
         print(altitude_slice)
+        block_count += np.count_nonzero(altitude_slice)
+
+print("Total block count: {0}".format(int(block_count)))
+
+# Modify a block: set coordinate (0, 0) at altitude 2 to be a mushroom
+chunk.Blocks[0, 0, 2] = 40
+
+# Save the updated world
+chunk.chunkChanged()
+world.saveInPlace()
+
+# world.saveToFile("level_updated.dat")
+# # world.saveInPlace
+#
+# # Check what methods and attributes the world exposes
+# for elem in dir(world):
+#     print(elem)
