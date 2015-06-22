@@ -49,7 +49,8 @@ for i in range(num_blocks):
     # Randomly choose an altitude coordinate between 2 (the first level above the grass) and 10
     altitude = np.random.randint(2, 10)
     # Randomly choose a block type from 1 (stone), 17 (wood), 40 (mushroom)
-    block_type = np.random.choice([1, 17, 40])
+    # block_type = np.random.choice([1, 17, 40])
+    block_type = 40
     # Place the block
     chunk.Blocks[x, y, altitude] = block_type
 
