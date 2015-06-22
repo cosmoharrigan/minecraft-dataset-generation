@@ -10,10 +10,10 @@ import numpy as np
 __author__ = "Cosmo Harrigan"
 
 # Load the level data: set the path using level_filename here
-level_filename = "/Users/cosmo/minecraft-dataset-generation/world/level.dat" # Unprocessed repository version
-# level_filename = "/Users/cosmo/minecraft-server/world/level.dat" # Server version
-# level_filename = "/Users/cosmo/minecraft-dataset-generation/world-processed/level.dat" # Processed repository version
-# level_filename = "/Users/cosmo/Library/Application Support/minecraft/saves/test6b/level.dat" # MCEdit saved version
+level_filename = "/Users/cosmo/minecraft-dataset-generation/world/level.dat"  # Unprocessed repository version
+# level_filename = "/Users/cosmo/minecraft-server/world/level.dat"  # Server version
+# level_filename = "/Users/cosmo/minecraft-dataset-generation/world-processed/level.dat"  # Processed repository version
+# level_filename = "/Users/cosmo/Library/Application Support/minecraft/saves/test6b/level.dat"  # MCEdit saved version
 
 world = mclevel.loadWorld(level_filename)
 
@@ -22,37 +22,21 @@ chunks = world.getChunks()
 print("Number of chunks: {0}".format(len(list(chunks))))
 
 # Print the position of each chunk
-# chunk_positions = list(world.allChunks)
-# print("Chunk positions:")
-# for chunk_position in chunk_positions:
-#     print(chunk_position)
+chunk_positions = list(world.allChunks)
+print("Chunk positions:")
+for chunk_position in chunk_positions:
+    print(chunk_position)
 
 # In this case, we will only work with the chunk located at (0, 0) since we
 # are defining a small world that fits within one chunk.
-chunk = world.getChunk(0, 0)
-
-block_count = 0
-
-# Display the blocks at each slice that is non-empty
-for altitude in range(256):
-    # Print the slice of this altitude
-    altitude_slice = chunk.Blocks[:, :, altitude]
-
-    # If the altitude slice contains any blocks, print it
-    if np.sum(altitude_slice):
-        print("---- Altitude: {0}".format(altitude))
-        print(altitude_slice)
-        block_count += np.count_nonzero(altitude_slice)
-
-print("Total block count: {0}".format(int(block_count)))
-
-# Modify a block: set coordinate (0, 0) at altitude 2 to be a mushroom
-chunk.Blocks[0, 0, 2] = 40
+chunk = world.getChunk(-1, 0)
 
 # Erase any blocks above the grass
-#for altitude in range(256 - 2):
-#    chunk.Blocks[:, :, altitude] = 0
 chunk.Blocks[:, :, 2:255] = 0
+
+# Example: How to modify a block
+# Set coordinate (0, 0) at altitude 2 to be a mushroom
+chunk.Blocks[0, 0, 2] = 40
 
 # Randomly place 10 blocks according to certain constraints
 num_blocks = 10
@@ -67,9 +51,27 @@ for i in range(num_blocks):
     # Place the block
     chunk.Blocks[x, y, altitude] = block_type
 
+# Set the spawn point
+# world.setPlayerPosition((4, 4, 5))  # add 3 to make sure his head isn't in the ground.
+# world.setPlayerSpawnPosition((4, 4, 2))
+
 # Save the updated world
 chunk.chunkChanged()
 world.saveInPlace()
+
+# Display the blocks at each slice that is non-empty
+block_count = 0
+for altitude in range(256):
+    # Print the slice of this altitude
+    altitude_slice = chunk.Blocks[:, :, altitude]
+
+    # If the altitude slice contains any blocks, print it
+    if np.sum(altitude_slice):
+        print("---- Altitude: {0}".format(altitude))
+        print(altitude_slice)
+        block_count += np.count_nonzero(altitude_slice)
+
+print("Total block count: {0}".format(int(block_count)))
 
 # # Check what methods and attributes the world exposes
 # [print(elem) for elem in dir(world)]
