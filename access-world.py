@@ -10,10 +10,12 @@ import numpy as np
 __author__ = "Cosmo Harrigan"
 
 # Load the level data: set the path using level_filename here
-level_filename = "/Users/cosmo/minecraft-dataset-generation/world/level.dat"  # Unprocessed repository version
-# level_filename = "/Users/cosmo/minecraft-server/world/level.dat"  # Server version
+# level_filename = "/Users/cosmo/minecraft-dataset-generation/world/level.dat"  # Unprocessed repository version
+level_filename = "/Users/cosmo/minecraft-server/world/level.dat"  # Server version
 # level_filename = "/Users/cosmo/minecraft-dataset-generation/world-processed/level.dat"  # Processed repository version
 # level_filename = "/Users/cosmo/Library/Application Support/minecraft/saves/test6b/level.dat"  # MCEdit saved version
+
+READ_ONLY = False
 
 world = mclevel.loadWorld(level_filename)
 
@@ -21,11 +23,11 @@ world = mclevel.loadWorld(level_filename)
 chunks = world.getChunks()
 print("Number of chunks: {0}".format(len(list(chunks))))
 
-# Print the position of each chunk
-chunk_positions = list(world.allChunks)
-print("Chunk positions:")
-for chunk_position in chunk_positions:
-    print(chunk_position)
+# # Print the position of each chunk
+# chunk_positions = list(world.allChunks)
+# print("Chunk positions:")
+# for chunk_position in chunk_positions:
+#     print(chunk_position)
 
 # In this case, we will only work with the chunk located at (0, 0) since we
 # are defining a small world that fits within one chunk.
@@ -56,8 +58,9 @@ for i in range(num_blocks):
 # world.setPlayerSpawnPosition((4, 4, 2))
 
 # Save the updated world
-chunk.chunkChanged()
-world.saveInPlace()
+if READ_ONLY == False:
+    chunk.chunkChanged()
+    world.saveInPlace()
 
 # Display the blocks at each slice that is non-empty
 block_count = 0
