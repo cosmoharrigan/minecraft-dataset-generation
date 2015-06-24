@@ -3,8 +3,6 @@
 ## Overview
 The files needed to generate the Minecraft dataset are provided here.
 
-The world uses one chunk, which is 16x16 blocks wide by 256 blocks high.
-
 ## Contents
 * **make-hdf5** - Jupyter notebook. After capturing Minecraft screenshots into **png** files, this utility produces an HDF5 datafile from them. Includes examples of how to create and how to read the HDF5 datafile.
 
