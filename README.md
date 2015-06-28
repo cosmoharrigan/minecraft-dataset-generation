@@ -24,6 +24,8 @@ $ cp -R ~/minecraft-dataset-generation/world /Users/cosmo/minecraft-server/
 
 ### Inside the Minecraft client
 ![Screenshot](images/screenshot.png)
+![Screenshot](images/minecraft-mushrooms-1.png)
+![Screenshot](images/minecraft-mushrooms-2.png)
 
 ### Using the MCEdit level editor
 ![Screenshot](images/mcedit.png)
