@@ -1,5 +1,7 @@
 # Minecraft Machine Learning Dataset: Generation Instructions
 
+## Note: This is in-progress and incomplete. The initial release has not yet occurred.
+
 ## Overview
 The files needed to generate the Minecraft dataset are provided here.
 
