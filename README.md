@@ -39,3 +39,8 @@ $ cp -R ~/minecraft-dataset-generation/world /Users/cosmo/minecraft-server/
 * Clone the [MCEdit Unified repository](https://github.com/Khroki/MCEdit-Unified) to obtain the Python programmatic world editor.
 * To run ```access-world.py```, **cd** to the ```MCEdit-Unified``` folder that you cloned from the repository, and run ```python2 ~/minecraft-dataset-generation/access-world.py``` (replace with the correct path on your system as needed.)
 * If you want to add additional functionality beyond that contained in ```access-world.py```, the file ```pymclevel/mclevel.py``` in the ```MCEdit-Unified``` repository provides a useful explanation of how to interact with the ```pymclevel``` API.
+
+## Running the Bukkit server
+- Obtain the server dump
+- Start the server:
+    java -Dfile.encoding=utf-8 -Djline.terminal=jline.UnsupportedTerminal -client -Xmx1024M -jar spigot.jar nogui -d yyyy-MM-dd HH:mm:ss -nojline --log-strip-color
