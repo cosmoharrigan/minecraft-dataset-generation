@@ -68,7 +68,7 @@ function main() {
     bot.look(yaw, pitch);
 
     // update the block every 100 iterations
-  	if (i % 100 == 0) {
+    if (i % 100 == 0) {
       // remove the previous block
       bot.chat('/setblock ' + block.x + ' ' + block.y + ' ' + block.z + ' air');
       block.x = getRandomInt(-10, 11);
