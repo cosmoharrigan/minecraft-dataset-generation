@@ -15,8 +15,8 @@ from plugin import BotPlugin
 # Enter your credentials and the server information
 settings = {
     'start': {
-        'username': '',
-        'password': '',
+        'username': 'cosmoharrigan@gmail.com',
+        'password': 'omzok1',
     },
 }
 
@@ -29,3 +29,4 @@ plugins.append(('bot', BotPlugin))
 # Instantiate and start the client, which will then run and wait for events to occur
 client = Client(plugins=plugins, settings=settings)
 client.start('localhost', 25565)
+# client.start('blockworlds.micropsi-industries.com', 25565)

@@ -15,7 +15,7 @@ Currently includes examples of the following functionality:
 __author__ = 'Cosmo Harrigan'
 
 # The bot will teleport to this starting position
-START_COORDINATES = (10, 2, 10, 0, 0)  # (x, y, z, y-rot, x-rot)
+START_COORDINATES = (0, 20, 0, 0, 0)  # (x, y, z, y-rot, x-rot)
 
 import random
 
@@ -30,6 +30,8 @@ from spock.mcmap import mapdata
 @pl_announce('ExamplePlugin')
 class BotPlugin:
     def __init__(self, ploader, settings):
+        self.yaw = 0
+
         # Load anything that you will use later in the plugin
         # Here are some examples of what you can load:
         self.entities = ploader.requires('Entities')
@@ -48,7 +50,7 @@ class BotPlugin:
         ploader.reg_event_handler("cl_join_game", self.perform_initial_actions)
 
         # Example of registering a timer that triggers a method periodically
-        frequency = 5  # Number of seconds between triggers
+        frequency = 1  # Number of seconds between triggers
         self.timers.reg_event_timer(frequency, self.periodic_event_handler)
 
     def perform_initial_actions(self, name, data):
@@ -56,10 +58,10 @@ class BotPlugin:
         block and sends a chat message."""
         # Set position and orientation
         (self.clinfo.position.x,
-         self.clinfo.position.y,
-         self.clinfo.position.z,
-         self.clinfo.position.pitch,
-         self.clinfo.position.yaw) = START_COORDINATES
+        self.clinfo.position.y,
+        self.clinfo.position.z,
+        self.clinfo.position.pitch,
+        self.clinfo.position.yaw) = START_COORDINATES
 
         # Send a chat message
         self.emit_chat_message(msg='Bot active.')
@@ -75,8 +77,34 @@ class BotPlugin:
             self.clinfo.position.pitch,
             self.clinfo.position.yaw))
 
-        # Rotates the bot by 1 degree
-        self.clinfo.position.yaw = (self.clinfo.position.yaw + 1) % 360
+        delta = random.choice([-10, 0, 10])
+        # self.clinfo.position.x += delta
+
+        # self.clinfo.position.yaw += delta
+
+        # print(dir(self.clinfo.position))
+
+        #
+        # # Rotates the bot by 1 degree
+        # self.yaw += 1
+        # self.clinfo.position.yaw = (self.yaw)  # % 360
+        # self.clinfo.position.x += 1
+        print(self.clinfo.position.yaw)
+
+        # self.emit_chat_message(msg='Bot active.')
+
+        #
+        # # self.clinfo.position.x = 3
+        # # self.clinfo.position.y = 2
+        # # self.clinfo.position.z = 0
+        #
+        # # -50 64 410
+        # # self.yaw += 1
+        # s = '/tp 10 10 10'.format(int(0))
+        # print(s)
+        # import time
+        # time.sleep(3)
+        # self.emit_chat_message(msg="frogs")
 
         # Read a block
         x, y, z = 5, 5, 5
@@ -86,11 +114,13 @@ class BotPlugin:
                                                                                     block_placed.name))
 
         # Place a block (choosing the type randomly from a list of types)
-        self.place_block(x, y, z, random.choice(['waterlily', 'red_mushroom', 'brown_mushroom']))
+        self.place_block(x, y, z, random.choice(['red_mushroom', 'brown_mushroom']))
 
     def emit_chat_message(self, msg):
         """Helper method that sends chat messages or chat commands"""
-        self.net.push(Packet(ident='PLAY>Chat Message', data={'message': msg}))
+        # self.net.push(Packet(ident='PLAY>Chat Message', data={'message': msg}))
+        print('msg: {0}'.format(msg))
+        self.net.push_packet('PLAY>Chat Message', {'message': ' '.join(msg)})
 
     def place_block(self, x, y, z, block_type):
         """Helper method that places a block by using the 'setblock' chat command"""
