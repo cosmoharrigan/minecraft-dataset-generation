@@ -4,8 +4,8 @@
 // Usage: node bot.js
 
 // Set the following parameters before running:
-CONFIG_EMAIL = 'cosmoharrigan@gmail.com'
-CONFIG_PASSWORD = 'omzok1'
+CONFIG_EMAIL = ''
+CONFIG_PASSWORD = ''
 CONFIG_SERVER = 'localhost'
 CONFIG_PORT = 25565
 
