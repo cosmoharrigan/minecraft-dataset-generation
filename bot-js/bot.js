@@ -4,8 +4,8 @@
 // Usage: node bot.js
 
 // Set the following parameters before running:
-CONFIG_EMAIL = 'cosmoharrigan@gmail.com'
-CONFIG_PASSWORD = 'omzok1'
+CONFIG_EMAIL = ''
+CONFIG_PASSWORD = ''
 CONFIG_SERVER = 'localhost'
 CONFIG_PORT = 25565
 
@@ -52,7 +52,7 @@ function main() {
   	}
   }
 
-  // This function will run every 500 milliseconds
+  // This function will run every 1000 milliseconds
   setInterval(function() {
     // set a new position every 100 iterations
     if (i % 10 == 0) {
@@ -99,5 +99,5 @@ function main() {
                 bot.entity.yaw);               // bot yaw
 
   	i++;
-  }, 1 * 500);  // 500 is the delay between updates in milliseconds
+  }, 1 * 1000);  // 1000 is the delay between updates in milliseconds
 }
