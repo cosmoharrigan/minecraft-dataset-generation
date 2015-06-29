@@ -4,5 +4,5 @@ This utility takes a series of screenshots and saves them as PNG files with an i
     javac screenshot/Screenshot.java
 
 ## Running
-    java screenshot/Screenshot```
+    java screenshot/Screenshot
 
