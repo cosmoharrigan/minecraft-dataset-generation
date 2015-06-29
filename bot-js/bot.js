@@ -4,8 +4,8 @@
 // Usage: node bot.js
 
 // Set the following parameters before running:
-CONFIG_EMAIL = ''
-CONFIG_PASSWORD = ''
+CONFIG_EMAIL = 'cosmoharrigan@gmail.com'
+CONFIG_PASSWORD = 'omzok1'
 CONFIG_SERVER = 'localhost'
 CONFIG_PORT = 25565
 
@@ -30,6 +30,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+// chooses one element from a list at random
 function choose(choices) {
   var index = Math.floor(Math.random() * choices.length);
   return choices[index];
