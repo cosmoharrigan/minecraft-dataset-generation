@@ -15,7 +15,8 @@ $ cp -R ~/minecraft-dataset-generation/world /Users/cosmo/minecraft-server/
 ```
 * **server.properties** - The ```server.properties``` file in the Minecraft server folder should be replaced with this file.
 * **world-processed** - This is what the ```world``` folder is transformed into after it is loaded the first time by the Minecraft server.
-* **bot** - Bot for placing blocks in the world and changing and recording agent position and orientation
+* **bot-js** - node.js bot for placing blocks in the world and changing and recording agent position and orientation
+* **bot-python** - Python bot for placing blocks in the world and changing and recording agent position and orientation
 * **screen-capture** - Utility for capturing screenshots
 
 ## Additional contents (optional)
