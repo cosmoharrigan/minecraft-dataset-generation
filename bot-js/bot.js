@@ -4,8 +4,8 @@
 // Usage: node bot.js
 
 // Set the following parameters before running:
-CONFIG_EMAIL = ''
-CONFIG_PASSWORD = ''
+CONFIG_EMAIL = 'cosmoharrigan@gmail.com'
+CONFIG_PASSWORD = 'omzok1'
 CONFIG_SERVER = 'localhost'
 CONFIG_PORT = 25565
 
@@ -53,7 +53,7 @@ function main() {
   }
 
   // This function will run every 500 milliseconds
-  setInterval(function(){
+  setInterval(function() {
     // set a new position every 100 iterations
     if (i % 10 == 0) {
       x = getRandomInt(-10, 11);
@@ -69,22 +69,22 @@ function main() {
 
     // update the block every 100 iterations
   	if (i % 100 == 0) {
-  	  // remove the previous block
-  		bot.chat('/setblock ' + block.x + ' ' + block.y + ' ' + block.z + ' air');
-  		block.x = getRandomInt(-10, 11);
-  		block.y = getRandomInt(2, 11);
-  		block.z = getRandomInt(2, 15);
+      // remove the previous block
+      bot.chat('/setblock ' + block.x + ' ' + block.y + ' ' + block.z + ' air');
+      block.x = getRandomInt(-10, 11);
+      block.y = getRandomInt(2, 11);
+      block.z = getRandomInt(2, 15);
 
       // choose the new block type
       blockTypes = ['stone', 'wood', 'leaves', 'ice', 'pumpkin']
       blockType = choose(blockTypes)
 
       // set the new block
-  		bot.chat('/setblock ' + block.x + ' ' + block.y + ' ' + block.z + ' ' + blockType);
+      bot.chat('/setblock ' + block.x + ' ' + block.y + ' ' + block.z + ' ' + blockType);
 
       // make sure the lighting stays the same
       bot.chat('/time set 0');
-  	}
+    }
 
     // log the current parameters
     console.log(Date.now().toString() + ',' +  // timestamp
