@@ -11,17 +11,18 @@ import javax.imageio.ImageIO;
 
 // Takes a series of screenshots and saves them as PNG files with an incrementing integer as the filename
 public class Screenshot {
-    public static void main(String[] args) throws AWTException, IOException, InterruptedException {  
+    public static void main(String[] args) throws AWTException, IOException, InterruptedException {
         int i = 0;
-        
+
         Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
         Robot robot = new Robot();
-        
+
         while(true) {
             BufferedImage capture = robot.createScreenCapture(screenRect);
-            ImageIO.write(capture, "png", new File(Integer.toString(i) + ".png"));
+            long timestamp = System.currentTimeMillis();
+            ImageIO.write(capture, "png", new File(Integer.toString(i) + "_" + timestamp + ".png"));
             i++;
-            System.out.println(i);
+            System.out.println(i + ": " + timestamp);
         }
     }
 }
