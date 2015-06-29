@@ -1,5 +1,5 @@
 """
-Plugin for placing blocks in the world and
+Plugin for placing blocks in the world and changing and
 recording agent position and orientation
 
 Currently includes examples of the following functionality:
