@@ -12,6 +12,7 @@ CONFIG_PORT = 25565
 var fs = require('fs');
 var os = require('os');
 var path = require('path');
+var exec = require('child_process').exec;
 
 // create and connect the bot
 var mineflayer = require('mineflayer');
@@ -52,7 +53,7 @@ function main() {
   	}
   }
 
-  // This function will run every 1000 milliseconds
+  // This function runs periodically
   setInterval(function() {
     // set a new position every 100 iterations
     if (i % 10 == 0) {
@@ -83,8 +84,18 @@ function main() {
       bot.chat('/setblock ' + block.x + ' ' + block.y + ' ' + block.z + ' ' + blockType);
 
       // make sure the lighting stays the same
-      bot.chat('/time set 0');
+      bot.chat('/time set 1000');
+      // make sure it doesn't rain
+      bot.chat('/weather clear');
     }
+
+    // obtain the timestamp that will be used to correlate the parameters tuple
+    // with the screenshot
+    timestamp = Date.new().toString();
+
+    // save a screenshot with the timestamp as the filename
+    command = '/usr/sbin/screencapture ' + timestamp + '.png';
+    exec(command, function callback(error, stdout, stderr) {} );
 
     // log the current parameters
     console.log(Date.now().toString() + ',' +  // timestamp
@@ -99,5 +110,5 @@ function main() {
                 bot.entity.yaw);               // bot yaw
 
   	i++;
-  }, 1 * 1000);  // 1000 is the delay between updates in milliseconds
+  }, 1 * 500);  // delay between updates in milliseconds
 }
