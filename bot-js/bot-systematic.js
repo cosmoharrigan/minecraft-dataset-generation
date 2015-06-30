@@ -110,7 +110,7 @@ function main() {
 
     // save a screenshot with the counter as the filename
     command = '/usr/sbin/screencapture ' + i + '.png';
-    // exec(command, function callback(error, stdout, stderr) {} );
+    exec(command, function callback(error, stdout, stderr) {} );
 
     // log the current parameters
     console.log(i + ',' +                      // counter
