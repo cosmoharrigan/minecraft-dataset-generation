@@ -12,5 +12,5 @@
 - Requires https://github.com/andrewrk/mineflayer
 
 ## Usage
-    node bot.js
+    node bot-systematic.js
 

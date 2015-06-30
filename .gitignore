@@ -1,4 +1,6 @@
 .DS_Store
 world/.DS_Store
 .idea/
+*.png
+*png-*
 

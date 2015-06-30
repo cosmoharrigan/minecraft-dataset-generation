@@ -47,10 +47,10 @@ function main() {
   // initialize the environment so that it starts empty
   for (x = -16; x < 16; x++) {
     for (y = 2; y < 16; y++) {
-    	for (z = -16; z < 16; z++) {
-  			bot.chat('/setblock ' + x + ' ' + y + ' ' + z + ' air');
-  		}
-  	}
+      for (z = -16; z < 16; z++) {
+        bot.chat('/setblock ' + x + ' ' + y + ' ' + z + ' air');
+      }
+    }
   }
 
   // This function runs periodically
@@ -72,6 +72,8 @@ function main() {
     if (i % 100 == 0) {
       // remove the previous block
       bot.chat('/setblock ' + block.x + ' ' + block.y + ' ' + block.z + ' air');
+
+      // choose the position of the new block
       block.x = getRandomInt(-10, 11);
       block.y = getRandomInt(2, 11);
       block.z = getRandomInt(2, 15);
