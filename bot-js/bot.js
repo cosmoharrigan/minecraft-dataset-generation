@@ -91,14 +91,14 @@ function main() {
 
     // obtain the timestamp that will be used to correlate the parameters tuple
     // with the screenshot
-    timestamp = Date.new().toString();
+    timestamp = Date.now().toString();
 
     // save a screenshot with the timestamp as the filename
     command = '/usr/sbin/screencapture ' + timestamp + '.png';
     exec(command, function callback(error, stdout, stderr) {} );
 
     // log the current parameters
-    console.log(Date.now().toString() + ',' +  // timestamp
+    console.log(timestamp + ',' +              // timestamp
                 block.x + ',' +                // block x
                 block.y + ',' +                // block y
                 block.z + ',' +                // block z
