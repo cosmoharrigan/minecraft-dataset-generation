@@ -17,12 +17,12 @@ $ cp -R ~/minecraft-dataset-generation/world /Users/cosmo/minecraft-server/
 * **world-processed** - This is what the ```world``` folder is transformed into after it is loaded the first time by the Minecraft server.
 * **bot-js** - node.js bot for placing blocks in the world and changing and recording agent position and orientation
 * **bot-python** - Python bot for placing blocks in the world and changing and recording agent position and orientation
-* **screen-capture** - Utility for capturing screenshots
+* **screen-capture** - Optional Java utility for taking a screenshot at a regular interval and saving to a file. Currently not used, as the preferred method is to use the screenshot capability contained within ```bot-js```.
 
 ## Additional contents (optional)
 * **access-world.py** - Illustrates how to use the ```pymclevel``` Python interface to interact with world data by printing the 2D NumPy array for each slice of the world that contains blocks.
 
-## Screenshot
+## Screenshots 
 
 ### Minecraft world regions
 ![Screenshot](images/minecraft-regions.png)
