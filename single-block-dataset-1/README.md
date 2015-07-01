@@ -15,6 +15,7 @@ The images have filenames that consist of ```[counter].png```, where counter is 
 <center><img src='example.png' width=300></center>
 
 ## CSV data definition
+The data is stored in a CSV file named ```single-block-dataset-1.csv```.
 
 ### Header
 The CSV file contains the following header:
