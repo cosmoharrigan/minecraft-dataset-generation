@@ -12,7 +12,7 @@ The block types are varied between: **stone**, **log**, **bedrock**, **diamond_o
 The images have filenames that consist of ```[counter].png```, where counter is a unique identifier, consisting of an integer ranging between 1 to 8080. These unique identifiers join the image to the ```counter``` value found in each row in the CSV file.
 
 ### Example image
-<center><img src='8080.png' width=300></center>
+<center><img src='example.png' width=300></center>
 
 ## CSV data definition
 
