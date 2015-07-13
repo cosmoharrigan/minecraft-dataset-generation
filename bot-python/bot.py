@@ -15,8 +15,8 @@ from plugin import BotPlugin
 # Enter your credentials and the server information
 settings = {
     'start': {
-        'username': 'cosmoharrigan@gmail.com',
-        'password': 'omzok1',
+        'username': '',
+        'password': '',
     },
 }
 
