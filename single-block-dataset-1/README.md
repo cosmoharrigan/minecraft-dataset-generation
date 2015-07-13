@@ -8,6 +8,9 @@ The dataset consists of 8080 examples. Each example consists of a screenshot fro
 
 The block types are varied between: **stone**, **log**, **bedrock**, **diamond_ore**, **pumpkin**.
 
+## Dataset file
+The dataset is in a file named ```single-block-dataset-1.tar.gz```.
+
 ## Images
 The images have filenames that consist of ```[counter].png```, where counter is a unique identifier, consisting of an integer ranging between 1 to 8080. These unique identifiers join the image to the ```counter``` value found in each row in the CSV file.
 
