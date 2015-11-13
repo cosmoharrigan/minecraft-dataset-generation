@@ -1,9 +1,11 @@
 # Minecraft Machine Learning Dataset: Generation Instructions
 
-## Note: This is in-progress and incomplete. The initial release has not yet occurred.
+#### Note: This is still in-progress. The initial release has not yet occurred.
 
 ## Overview
 The files needed to generate the Minecraft dataset are provided here.
+
+The dataset is also available in HDF5 format upon request.
 
 ## Contents
 * **make-hdf5** - Jupyter notebook. After capturing Minecraft screenshots into **png** files, this utility produces an HDF5 datafile from them. Includes examples of how to create and how to read the HDF5 datafile.
