@@ -5,7 +5,7 @@
 ## Overview
 The files needed to generate the Minecraft dataset are provided here.
 
-The dataset is also available in HDF5 format upon request.
+The dataset is also available on Amazon S3 in HDF5 format upon request.
 
 ## Contents
 * **make-hdf5** - Jupyter notebook. After capturing Minecraft screenshots into **png** files, this utility produces an HDF5 datafile from them. Includes examples of how to create and how to read the HDF5 datafile.
